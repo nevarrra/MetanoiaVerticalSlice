@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class DeerFinishedSearching : Condition
 {
+    private int randomNumb;
+
     public override bool Validate(FSM entity)
     {
         //TimerRodando

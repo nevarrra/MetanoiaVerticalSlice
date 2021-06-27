@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+using System;
 
 public class BreathingUI : MonoBehaviour
 {
     public ControlAndMovement player;
     private float speed;
-    public GameObject buttonPrefab;
+    //public GameObject buttonPrefab;
+    public List<GameObject> buttonPrefabs;
     public Transform buttonInstantiate;
     private List<GameObject> buttons;
     private GameObject newButton;
@@ -20,7 +23,7 @@ public class BreathingUI : MonoBehaviour
 
     void Start()
     {
-        speed = 180f;
+        speed = 300f;
         buttons = new List<GameObject>();
         instantiateTimer = 0f;
         successNr = 0;
@@ -33,16 +36,18 @@ public class BreathingUI : MonoBehaviour
     private void OnEnable()
     {
         panelActive = true;
+        player.interacting = true;
     }
 
     void InstantiateButtons()
     {
         if (instantiateTimer <= 0)
-            {
-            newButton = Instantiate(buttonPrefab, buttonInstantiate.localPosition, Quaternion.identity);
+        {
+            int randIndex = UnityEngine.Random.Range(0, 2);
+            newButton = Instantiate(buttonPrefabs[randIndex], buttonInstantiate.localPosition, Quaternion.identity);
             newButton.transform.SetParent(this.transform, false);
             buttons.Add(newButton);
-            instantiateTimer = Random.Range(0.7f, 1.7f);
+            instantiateTimer = UnityEngine.Random.Range(0.5f, 2.7f);
             }
         instantiateTimer-= Time.deltaTime;
         // run random timer
@@ -74,9 +79,14 @@ public class BreathingUI : MonoBehaviour
             {
                 if(ButtonIntersects(button))
                 {
+                    
+                    //Debug.Log(button);
                     successNr += 1;
                     pressedBtn = button;
+                    button.GetComponent<Animator>().SetBool("Fade", true);
+
                 }
+
                 //disable button
             }
 
@@ -90,13 +100,12 @@ public class BreathingUI : MonoBehaviour
         {
             successNr -= 1;
         }
-
-       
+      
 
         if (pressedBtn != null)
         {
             buttons.Remove(pressedBtn);
-            GameObject.Destroy(pressedBtn, 0.1f);
+            GameObject.Destroy(pressedBtn, 0.3f);
         }
     }
 
@@ -107,10 +116,7 @@ public class BreathingUI : MonoBehaviour
 
     void PlayerWins()
     {
-//        GameObject.Destroy(gameObject);
         cam.RestoreCamera();
-        //player.ResetHeartbeat();
-        Debug.Log(player.heartBeat);
         ResetHeartbeat();
         buttons.Clear();
         successNr = 0;
@@ -157,10 +163,12 @@ public class BreathingUI : MonoBehaviour
             //cam.BreathingEffect();
             if (successNr >= 5)
             {
+                player.interacting = false;
                 PlayerWins();
             }
             else if (successNr <= -5)
             {
+                player.interacting = false;
                 EndGame();
             }
         }

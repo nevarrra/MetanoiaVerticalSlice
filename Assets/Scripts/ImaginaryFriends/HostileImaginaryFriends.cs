@@ -82,7 +82,7 @@ public class HostileImaginaryFriends : MonoBehaviour
     void Update()
     {
         
-        if ((fsm.currentState == interactingState) && (Input.GetKeyDown("e")) && (ActiveQuestionary == 0))
+        if ((fsm.currentState == interactingState) && (Input.GetKeyDown("e")) && (ActiveQuestionary == 0) && (!control.HasTriggeredBreathingUI()))
         {
             //narrations.TriggeredSpeech(gameObject, 1);
             control.interacting = true;
