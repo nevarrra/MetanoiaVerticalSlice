@@ -8,10 +8,7 @@ public class PlayerInVision : Condition
     public bool isInVision;
     public override bool Validate(FSM entity)
     {
-        if (Vector3.Distance(entity.GetAgent().player.transform.position, entity.GetAgent().transform.position) < entity.GetAgent().imaginaryFriend.VisionRange 
-            && !entity.GetAgent().player.GetComponent<ControlAndMovement>().CollidedWithLight() 
-            && entity.GetAgent().imaginaryFriend.ID != ShadowsID.Cat
-            || entity.GetAgent().imaginaryFriend.ID == ShadowsID.Lion && entity.GetAgent().control.CollidedWithMark())
+        if (Vector3.Distance(entity.GetAgent().player.transform.position, entity.GetAgent().transform.position) < entity.GetAgent().imaginaryFriend.VisionRange && !entity.GetAgent().player.GetComponent<ControlAndMovement>().CollidedWithLight() && entity.GetAgent().imaginaryFriend.ID != 1)
         {
             return isInVision;
         }

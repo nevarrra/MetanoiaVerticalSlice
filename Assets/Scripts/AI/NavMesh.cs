@@ -20,10 +20,6 @@ public class NavMesh : MonoBehaviour
     public Attributes imaginaryFriend;
     public SpeechManager narrations;
     public bool hasSpoken;
-
-    // LION KING:
-    public List<Waypoints> marks;
-    public GameObject markPrefab;
     
     // CAT:
     public GameObject[] corners;
@@ -36,15 +32,7 @@ public class NavMesh : MonoBehaviour
     public float pandaSleep = 5f;
     public float initialPandaSleepTimer = 5f;
 
-    private ControlAndMovement control;
-
-    //DEER :
-    public int deerCountDown = 0;
-    public float deerSearch = 3f;
-    public float deerSearchInitial = 3f;
-    public float deerRotationSpeed = 4f;
-    public int sideRotation = 1;
-    private int randomNumb;
+    public ControlAndMovement control;
 
     //DEER :
     public int deerCountDown = 0;
@@ -59,7 +47,7 @@ public class NavMesh : MonoBehaviour
         return narrations;
     }
 
-    public ShadowsID ShadowID()
+    public int ShadowID()
     {
         return imaginaryFriend.ID;
     }
@@ -131,10 +119,12 @@ public class NavMesh : MonoBehaviour
                 UpdatePath(); //recalculate path
                 currTarget++;
                 currWaypoint = 0;
+                
             }
             agent.SetDestination(path[currWaypoint].transform.position); // move to next waypoint
             currWaypoint++;
             pandaCountDown += 1;
+            deerCountDown += 1;
             /*DEER*/
             randomNumb = Random.Range(1, 3);
             if (randomNumb == 1)
@@ -145,7 +135,7 @@ public class NavMesh : MonoBehaviour
             {
                 sideRotation = -1;
             }
-            deerCountDown += 1;
+            
             //Debug.Log(pandaCountDown);
         }
     }
@@ -295,7 +285,7 @@ public class NavMesh : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0f, transform.rotation.eulerAngles.y, 0f));
     }
 
-    public void RestartPandaTimer()
+    public void RestartTimer()
     {
         pandaSleep = initialPandaSleepTimer;
     }
@@ -345,15 +335,16 @@ public class NavMesh : MonoBehaviour
     }
 
     // PLAYER'S SHADOW FUNCTIONS:
-    public void RandomizeTargets()
+    public Waypoints RandomizeTargets()
     {
         targets.Clear();
         targets.Add(waypoints[Random.Range(0, waypoints.Count)]);
+        return targets[0];
     }
 
-    public Waypoints GetRandomWaypoints()
+    public void IncreaseHeartbeat()
     {
-        return waypoints[Random.Range(0, waypoints.Count)];
+        //control
     }
 
     private void Start()

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
-
 public class FriendlyImaginaryFriends : MonoBehaviour
 {
     //Public
@@ -72,7 +71,7 @@ public class FriendlyImaginaryFriends : MonoBehaviour
             Time.timeScale = 0;
         }
 
-        if ((control.interacting == true) && (thisInteraction == true))
+        if (thisInteraction == true)
         {
             InteractingFriendlyImaginaryFriend();
         }
@@ -80,7 +79,7 @@ public class FriendlyImaginaryFriends : MonoBehaviour
 
     private void InteractingFriendlyImaginaryFriend()
     {
-        //control.interacting = true;
+        control.interacting = true;
 
         ifInteraction.SetActive(true);
         if ((sentenceTextIndex) == (sentencesText.Length - 1))
@@ -95,7 +94,7 @@ public class FriendlyImaginaryFriends : MonoBehaviour
 
     public void Request()
     {
-        //control.interacting = true;
+        control.interacting = true;
 
         if (selected.itemColleted == null)
         {
@@ -115,11 +114,11 @@ public class FriendlyImaginaryFriends : MonoBehaviour
         ifOptions.SetActive(true);
 
         //W & S to change optionIndex
-        if (control.moveVec.z > 0)
+        if (Input.GetKeyDown("w") == true)
         {
             optionsIndex -= 1;
         }
-        if (control.moveVec.z < 0)
+        if (Input.GetKeyDown("s") == true)
         {
             optionsIndex += 1;
         }
@@ -140,12 +139,12 @@ public class FriendlyImaginaryFriends : MonoBehaviour
         }
 
         //Give item player has
-        if ((optionsIndex == 0) && (control.interactButtonPressed))
+        if ((optionsIndex == 0) && (Input.GetMouseButtonDown(0)))
         {
-            control.interactButtonPressed = false;
             //correct item to correct request
             if (itemRequested == selected.itemColleted)
             {
+                selected.itemColleted = null;
                 //Destroy npc
                 Destroy(gameObject, 2f);
                 //turn off text & image
@@ -163,6 +162,7 @@ public class FriendlyImaginaryFriends : MonoBehaviour
             }
             else
             {
+                selected.itemColleted = null;
                 //Destroy npc
                 Destroy(gameObject, 2f);
                 //turn on text & image
@@ -182,9 +182,8 @@ public class FriendlyImaginaryFriends : MonoBehaviour
             }
         }
 
-        if ((optionsIndex == 1) && (control.interactButtonPressed))
+        if ((optionsIndex == 1) && (Input.GetMouseButtonDown(0)))
         {
-            control.interactButtonPressed = false;
             //Destroy npc
             Destroy(gameObject, 2f);
             //turn off text & image
@@ -201,9 +200,8 @@ public class FriendlyImaginaryFriends : MonoBehaviour
             thisInteraction = false;
         }
 
-        if ((optionsIndex == 2) && (control.interactButtonPressed))
+        if ((optionsIndex == 2) && (Input.GetMouseButtonDown(0)))
         {
-            control.interactButtonPressed = false;
             //turn off text & image
             ifInteraction.SetActive(false);
             //turn off options
@@ -232,9 +230,8 @@ public class FriendlyImaginaryFriends : MonoBehaviour
     public void Talking()
     {
         // Press Left click to next sentence
-        if (control.interactButtonPressed)
+        if (Input.GetMouseButtonDown(0))
         {
-            control.interactButtonPressed = false;
             sentenceTextIndex += 1;
         }
         sentenceUI.text = sentencesText[sentenceTextIndex];

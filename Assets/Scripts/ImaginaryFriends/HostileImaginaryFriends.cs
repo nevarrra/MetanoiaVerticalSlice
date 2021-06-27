@@ -450,6 +450,7 @@ public class HostileImaginaryFriends : MonoBehaviour
             //correct item to correct request
             if (itemRequested != selected.itemColleted)
             {
+                selected.itemColleted = null;
                 //Destroy npc
                 Destroy(gameObject, 0.5f);
                 ////Consequence\\\\
@@ -463,6 +464,7 @@ public class HostileImaginaryFriends : MonoBehaviour
             }
             else
             {
+                selected.itemColleted = null;
                 //Destroy npc
                 Destroy(gameObject, 0.5f);
                 //Turn Off

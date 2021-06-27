@@ -8,15 +8,7 @@ public class AttackAction : Action
     public override void Act(FSM entity)
     {
 
-        //if (dist > entity.GetAgent().imaginaryFriend.AttackRange)
-        //{
-        //    entity.GetAgent().imaginaryFriend.ChasingSpeed *= 1.1f;
-        //} else
-        //{
-        //    entity.GetAgent().UpdateSpeed(entity.GetAgent().player.GetComponent<ControlAndMovement>().movementSpeed);
-        //    entity.GetAgent().player.GetComponent<ControlAndMovement>().IncreaseHeartbeat(entity.GetAgent().imaginaryFriend.Damage);
-        //}
-        if (entity.GetAgent().imaginaryFriend.ID == ShadowsID.Rabbit)
+        if (entity.GetAgent().imaginaryFriend.ID == 3)
         {
             //Rabbit
             entity.GetAgent().imaginaryFriend.InitialChaseTimer = entity.GetAgent().imaginaryFriend.ChaseTimer;

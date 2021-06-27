@@ -6,7 +6,7 @@ public class Waypoints : MonoBehaviour
 {
     public Waypoints[] edges;
 
-    /*
+    
     private void OnDrawGizmos()
     {
         if (edges != null)
@@ -17,6 +17,5 @@ public class Waypoints : MonoBehaviour
             }
         }
     }
-
-    */
+    
 }

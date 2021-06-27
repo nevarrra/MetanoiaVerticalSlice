@@ -5,7 +5,9 @@ using UnityEngine;
 public class DeerShadow : Attributes
 {
     public override string Name { get; set; } = "Deer";
-    public override ShadowsID ID { get; set; } = ShadowsID.Deer;
+
+    public override int ID { get; set; } = 7;
+
     public override float Speed { get; set; } = 4.5f;
     public override float ChasingSpeed { get; set; } = 6f;
     public override float ChaseRange { get; set; } = 10f;

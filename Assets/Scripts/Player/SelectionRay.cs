@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
 
 public class SelectionRay : MonoBehaviour
 {
@@ -48,7 +47,7 @@ public class SelectionRay : MonoBehaviour
     void Update()
     {
         //Create Ray
-        Ray selectionRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Ray selectionRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit Hit;
         
         /*I KNOW, A LOT OF IFS, BUT I DIDNT FOUND OTHER WAYS TO DO THAT*/
@@ -61,7 +60,6 @@ public class SelectionRay : MonoBehaviour
             if ((Hit.transform.tag == itemTag) && (Vector3.Distance(transform.position, Hit.transform.position) < distance))
             {
                 //Change Image to Hand
-                Selector.texture = handTexture;
                 textItemName.SetActive(true);
                 itemName.text = Hit.collider.gameObject.name;
 

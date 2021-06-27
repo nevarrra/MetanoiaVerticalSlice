@@ -8,7 +8,7 @@ public class PandaPatrol : Action
     public override void Act(FSM entity)
     {
         //PANDA RELATED
-        entity.GetAgent().RestartPandaTimer();
+        entity.GetAgent().RestartTimer();
         entity.GetAgent().ResumeAgent();
     }
 }
