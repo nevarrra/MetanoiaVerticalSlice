@@ -144,11 +144,7 @@ public class BreathingUI : MonoBehaviour
 
     bool ButtonIntersects(GameObject currButton)
     {
-        
         return (GetWorldSpaceRect(pointer.GetComponent<RectTransform>()).Overlaps(GetWorldSpaceRect(currButton.GetComponent<RectTransform>())));
-       
-
-        // change bool to clicked
     }
 
 

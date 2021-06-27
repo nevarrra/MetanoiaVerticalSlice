@@ -14,6 +14,17 @@ public class PatrolAction : Action
         {
             entity.GetAgent().RandomizeTargets();
         }
+        if(entity.GetAgent().imaginaryFriend.ID == ShadowsID.Deer && entity.GetAgent().ReachedGoal())
+        {
+
+            entity.GetAgent().deerCountDown += 1;
+        }
+        if (entity.GetAgent().imaginaryFriend.ID == ShadowsID.Panda && entity.GetAgent().ReachedGoal())
+        {
+            entity.GetAgent().pandaCountDown += 1;
+
+        }
+        
         entity.GetAgent().Patrol();
        
     }

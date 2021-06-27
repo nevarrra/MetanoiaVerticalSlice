@@ -150,7 +150,7 @@ public class ControlAndMovement : MonoBehaviour
         if(col.gameObject.tag == "Lights")
         {
             isCollidingWithLight = true;
-            if(heartBeat > 125)
+            if(heartBeat > 165)
             {
                 cam.GetComponent<CameraControl>().DropCamera();
                 breathingUI.SetActive(true);

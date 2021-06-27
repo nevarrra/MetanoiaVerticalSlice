@@ -127,23 +127,9 @@ public class NavMesh : MonoBehaviour
             }
             agent.SetDestination(path[currWaypoint].transform.position); // move to next waypoint
             currWaypoint++;
-            pandaCountDown += 1;
+            
         }
-        
-        /*DEER*/
-        //randomNumb = Random.Range(1, 3);
-        //    if (randomNumb == 1)
-        //    {
-        //        sideRotation = 1;
-        //    }
-        //    else
-        //    {
-        //        sideRotation = -1;
-        //    }
-        //    deerCountDown += 1;
-
-        // This does not belong here. Patrol() is for ALL the shadows, not exclusively for the deer. 
-        
+               
     }
 
     public void RabbitPatrol()
