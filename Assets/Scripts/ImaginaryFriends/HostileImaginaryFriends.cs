@@ -9,6 +9,7 @@ public class HostileImaginaryFriends : MonoBehaviour
     public SpeechManager narrations;
     //Questionaries 
     //Last one is que question
+    public GameObject InGameUI;
     public string[] firstQuestionary;
     public string[] optionsFirstQuestionary;
     public int answerFirstQuestionary;
@@ -91,6 +92,7 @@ public class HostileImaginaryFriends : MonoBehaviour
             IFDrawObject.texture = IFDraw;
             //Time off
             Time.timeScale = 0;
+            InGameUI.SetActive(false);
 
         }
 
@@ -461,6 +463,7 @@ public class HostileImaginaryFriends : MonoBehaviour
                 //Flower
                 flower.transform.position = transform.position;
                 flower.SetActive(true);
+                InGameUI.SetActive(true);
             }
             else
             {
@@ -476,6 +479,7 @@ public class HostileImaginaryFriends : MonoBehaviour
                 Shadow.SetActive(true);
                 //Flower
                 flower.SetActive(true);
+                InGameUI.SetActive(true);
             }
         }
 
@@ -492,7 +496,7 @@ public class HostileImaginaryFriends : MonoBehaviour
             //Flower
             flower.transform.position = transform.position;
             flower.SetActive(true);
-
+            InGameUI.SetActive(true);
         }
 
         if ((optionsIndex == 2) && (Input.GetMouseButtonDown(0)))
@@ -503,6 +507,7 @@ public class HostileImaginaryFriends : MonoBehaviour
             optionsIndex = 0;
             //Turn Off
             ActiveQuestionary = 9;
+            InGameUI.SetActive(true);
         }
 
         /* BACK TO INITIAL OPTION */

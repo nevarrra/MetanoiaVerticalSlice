@@ -9,6 +9,7 @@ public class FriendlyImaginaryFriends : MonoBehaviour
     //Public
     //Sentences
     public string[] sentencesText;
+    public GameObject InGameUI;
     //Option Images And Text
     public RawImage[] optionsRawImages;
     public Text[] optionsText;
@@ -80,6 +81,7 @@ public class FriendlyImaginaryFriends : MonoBehaviour
     private void InteractingFriendlyImaginaryFriend()
     {
         control.interacting = true;
+        InGameUI.SetActive(false);
 
         ifInteraction.SetActive(true);
         if ((sentenceTextIndex) == (sentencesText.Length - 1))
@@ -159,6 +161,7 @@ public class FriendlyImaginaryFriends : MonoBehaviour
                 flower.SetActive(true);
                 Time.timeScale = 1;
                 thisInteraction = false;
+                InGameUI.SetActive(true);
             }
             else
             {
@@ -178,6 +181,7 @@ public class FriendlyImaginaryFriends : MonoBehaviour
                 flower.SetActive(true);
                 Time.timeScale = 1;
                 thisInteraction = false;
+                InGameUI.SetActive(true);
 
             }
         }
@@ -198,6 +202,7 @@ public class FriendlyImaginaryFriends : MonoBehaviour
             flower.SetActive(true);
             Time.timeScale = 1;
             thisInteraction = false;
+            InGameUI.SetActive(true);
         }
 
         if ((optionsIndex == 2) && (Input.GetMouseButtonDown(0)))
@@ -212,6 +217,7 @@ public class FriendlyImaginaryFriends : MonoBehaviour
             optionsIndex = 0;
             Time.timeScale = 1;
             thisInteraction = false;
+            InGameUI.SetActive(true);
         }
 
         /* BACK TO INITIAL OPTION */
