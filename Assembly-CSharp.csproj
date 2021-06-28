@@ -122,6 +122,7 @@
     <Compile Include="Assets\Scripts\AI\StaticNPC\Receptionist.cs" />
     <Compile Include="Assets\Scripts\AI\Conditions\Shadows\PlayerInVision.cs" />
     <Compile Include="Assets\Scripts\Shadows\LightShadowRay.cs" />
+    <Compile Include="Assets\Scripts\Lights\WallCandlesAnimations.cs" />
     <Compile Include="Assets\Scripts\Player\ControlAndMovement.cs" />
     <Compile Include="Assets\Scripts\Priority Queue\StablePriorityQueue.cs" />
     <Compile Include="Assets\Scripts\AI\Conditions\Shadows\FinishedSearching.cs" />
@@ -178,7 +179,6 @@
     <Compile Include="Assets\Scripts\Shadows\FoxShadow.cs" />
     <Compile Include="Assets\Scripts\AI\Actions\Shadows\DeerPatrol.cs" />
     <Compile Include="Assets\Scripts\Lights\LineCast.cs" />
-    <Compile Include="Assets\Scripts\Lights\WallCandlesAnimations.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
